@@ -16,11 +16,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void showMessage(const QString &message, unsigned int id);
 protected:
      void closeEvent(QCloseEvent *event) override;
 private slots:
     void onSubmit();
+    void onAdvanced();
 
 private:
     void loadPersisted();

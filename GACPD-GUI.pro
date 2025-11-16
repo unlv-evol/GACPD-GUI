@@ -8,10 +8,12 @@ QMAKE_CXXFLAGS += -std=c++20
 # Include paths for thirdparty, SV_FLATBUFFERS, and images
 INCLUDEPATH += $$PWD/include
 INCLUDEPATH += $$PWD/logs
+INCLUDEPATH += $$PWD/GACPD
 
 # Add files to DISTFILES for deployment
 DISTFILES += $$files($$PWD/include/*, true)
 DISTFILES += $$files($$PWD/logs/*, true)
+DISTFILES += $$files($$PWD/GACPD/*, true)
 
 # Enable compatibility for building across platforms
 win32 {
@@ -30,6 +32,7 @@ win32 {
     # Paths for source and destination directories
     INCLUDE_SRC = $$PWD/include
     LOGS_SRC = $$PWD/logs
+    GACPD_SRC = $$PWD/GACPD
 
     # Destination directory adjusted for release/debug
     CONFIG(debug, debug|release) {
@@ -40,16 +43,19 @@ win32 {
 
     INCLUDE_DEST = $$BUILD_DIR/include
     LOGS_DEST = $$BUILD_DIR/logs
-
+    GACPD_DEST = $$BUILD_DIR/GACPD
 
     SOURCE_INCLUDE_WIN = $$replace(INCLUDE_SRC, /, \\)
     DEST_INCLUDE_WIN = $$replace(INCLUDE_DEST, /, \\)
     DEST_LOGS_WIN = $$replace(LOGS_DEST, /, \\)
     SOURCE_LOGS_WIN = $$replace(LOGS_SRC, /, \\)
+    DEST_GACPD_WIN = $$replace(GACPD_DEST, /, \\)
+    SOURCE_GACPD_WIN = $$replace(GACPD_SRC, /, \\)
 
     copy_third.commands = \
         $$QMAKE_COPY_DIR \"$$SOURCE_INCLUDE_WIN\" \"$$DEST_INCLUDE_WIN\" && \
-        $$QMAKE_COPY_DIR \"$$SOURCE_LOGS_WIN\" \"$$DEST_LOGS_WIN\"
+        $$QMAKE_COPY_DIR \"$$SOURCE_LOGS_WIN\" \"$$DEST_LOGS_WIN\" && \
+        $$QMAKE_COPY_DIR \"$$SOURCE_GACPD_WIN\" \"$$DEST_GACPD_WIN\"
 
 
     QMAKE_EXTRA_TARGETS += copy_third
@@ -65,7 +71,7 @@ win32 {
     }
 }
 
-macx {
+macx { # TODO-ADD GACPD
     QMAKE_CXXFLAGS += -arch arm64
     QMAKE_LFLAGS += -arch arm64
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
@@ -99,7 +105,7 @@ macx {
     QMAKE_POST_LINK += $(MAKE) -f Makefile post_build
 }
 
-unix:!macx {
+unix:!macx { # TODO-ADD GACPD
     CONFIG += linux
 
     # Paths for source and destination directories
@@ -143,11 +149,11 @@ VPATH += $$unique($$dirname($$files(headers/*, true)))
 VPATH += $$unique($$dirname($$files(forms/*, true)))
 
 # Recursively include all .cpp and .h files from src and headers directories
-SOURCES += $$files(src/*.cpp, true) \
+SOURCES += $$files(src/*.cpp, true)
 
-HEADERS += $$files(headers/*.h, true) \
+HEADERS += $$files(headers/*.h, true)
 
-FORMS += $$files(forms/*.ui, true) \
+FORMS += $$files(forms/*.ui, true)
 
 # Deployment paths
 qnx: target.path = /tmp/$${TARGET}/bin

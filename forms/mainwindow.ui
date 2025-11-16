@@ -18,27 +18,30 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>50</y>
+      <y>90</y>
       <width>131</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="dateTimeInput">
+   <widget class="QDateEdit" name="dateInput">
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>110</y>
+      <y>140</y>
       <width>131</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="displayFormat">
+     <string>M/d/yyyy</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSubmit">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>140</y>
+      <y>180</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -51,7 +54,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
+      <y>70</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -64,7 +67,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>50</y>
+      <y>90</y>
       <width>151</width>
       <height>24</height>
      </rect>
@@ -73,8 +76,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>30</y>
+      <x>210</x>
+      <y>70</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -87,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>90</y>
+      <y>120</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -132,21 +135,27 @@
      <string/>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="dateTimeEdit">
+   <widget class="QDateEdit" name="dateEdit">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>110</y>
+      <y>140</y>
       <width>131</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="displayFormat">
+     <string>M/d/yyyy</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>90</y>
+      <y>120</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -166,6 +175,29 @@
     </property>
     <property name="text">
      <string>Advanced Results</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineText_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Project Name</string>
     </property>
    </widget>
   </widget>

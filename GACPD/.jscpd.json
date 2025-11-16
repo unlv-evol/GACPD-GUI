@@ -1,0 +1,8 @@
+{
+  "ignore": ["**/node_modules/**", "**/dist/**", ".jscpd.json", "package.json", "package-lock.json"],
+  "minLines": 1,
+  "reporters": ["html", "csv"],
+  "skipLocal": true,
+  "output": "reports",
+  "path": ["src", "cmp"]
+}
